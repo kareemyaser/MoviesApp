@@ -1,0 +1,65 @@
+<div
+  class="position-relative py-3 px-4 text-bg-primary border border-secondary d-flex justify-content-between"
+>
+  <div class="text-center fw-bolder">
+    <p>The Movie DataBase</p>
+  </div>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="30"
+    height="30"
+    fill="currentColor"
+    class="bi bi-houses-fill"
+    viewBox="0 0 16 16"
+    routerLink="/"
+  >
+    <path
+      d="M7.207 1a1 1 0 0 0-1.414 0L.146 6.646a.5.5 0 0 0 .708.708L1 7.207V12.5A1.5 1.5 0 0 0 2.5 14h.55a2.51 2.51 0 0 1-.05-.5V9.415a1.5 1.5 0 0 1-.56-2.475l5.353-5.354z"
+    />
+    <path
+      d="M8.793 2a1 1 0 0 1 1.414 0L12 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l1.854 1.853a.5.5 0 0 1-.708.708L15 8.207V13.5a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 4 13.5V8.207l-.146.147a.5.5 0 1 1-.708-.708z"
+    />
+  </svg>
+</div>
+<!-- <div>
+  {{ Movie.original_title }}
+  <img
+    src="https://image.tmdb.org/t/p/w500/{{ Movie.backdrop_path }}"
+    class="img-fluid"
+    alt="movie poster"
+  />
+</div> -->
+
+<div class="container d-flex">
+  <div class="movie-image">
+    <img
+      src="https://image.tmdb.org/t/p/w500/{{ Movie.backdrop_path }}"
+      class="img-fluid tall-image"
+      alt="movie poster"
+    />
+  </div>
+  <div class="movie-details">
+    <h2>{{ Movie.original_title }}</h2>
+    <p>{{ Movie.overview }}</p>
+    <p>Rating: {{ Rating }}%</p>
+    <p>Released In : {{ Movie.release_date }}</p>
+    <div class="d-grid gap-2">
+      <button
+        type="button"
+        class="btn btn-outline-success"
+        (click)="exportExcel()"
+      >
+        Download
+      </button>
+      <!-- <button class="btn btn-success" type="button">Download</button> -->
+    </div>
+  </div>
+</div>
+
+<!-- <gc-spread-sheets [backColor]=”spreadBackColor” [hostStyle]="hostStyle" (workbookInitialized)="workbookInit($event)">
+</gc-spread-sheets> -->
+<!-- <div class="exportExcel">
+  <p>Save Excel File</p>
+  <button (click)="onClickMe($event)">Save Excel!</button>
+</div> -->
