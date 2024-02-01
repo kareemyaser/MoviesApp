@@ -22,3 +22,39 @@
 .active-page {
   background-color: rgb(104, 179, 241);
 }
+
+.SaerchButton {
+  background-color: rgb(7, 7, 7);
+}
+.custom-color {
+  background-color: #60b0c0; /* Use your desired color code */
+  color: #0a0a0a; /* Set text color to white for better visibility */
+}
+
+.search-history-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 74px;
+  z-index: 1000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-y: auto;
+  width: 206px;
+}
+
+.search-history-dropdown ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-history-dropdown li {
+  padding: 8px;
+  cursor: pointer;
+  color: #000000;
+}
+
+.search-history-dropdown li:hover {
+  background-color: #f0f0f0;
+}

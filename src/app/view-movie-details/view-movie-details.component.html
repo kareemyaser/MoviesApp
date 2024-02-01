@@ -22,15 +22,6 @@
     />
   </svg>
 </div>
-<!-- <div>
-  {{ Movie.original_title }}
-  <img
-    src="https://image.tmdb.org/t/p/w500/{{ Movie.backdrop_path }}"
-    class="img-fluid"
-    alt="movie poster"
-  />
-</div> -->
-
 <div class="container d-flex">
   <div class="movie-image">
     <img
@@ -43,6 +34,7 @@
     <h2>{{ Movie.original_title }}</h2>
     <p>{{ Movie.overview }}</p>
     <p>Rating: {{ Rating }}%</p>
+    <p>Count of people voted : {{ Voted }}</p>
     <p>Released In : {{ Movie.release_date }}</p>
     <div class="d-grid gap-2">
       <button

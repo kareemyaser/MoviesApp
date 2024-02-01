@@ -24,6 +24,7 @@ export class ViewMovieDetailsComponent {
   Movie: any = {};
   id: any;
   Rating!: number;
+  Voted!: number;
 
   constructor(
     private movieService: MovieService,
@@ -35,6 +36,7 @@ export class ViewMovieDetailsComponent {
       (data: any) => {
         this.Movie = data;
         this.Rating = Math.round(data.vote_average * 10);
+        this.Voted = data.vote_count;
         console.log(this.Movie);
       },
       (error: any) => {}

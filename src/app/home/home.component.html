@@ -1,4 +1,4 @@
-<div
+<!-- <div
   class="position-relative py-3 px-4 text-bg-primary border border-secondary d-flex justify-content-between"
 >
   <div class="text-center fw-bolder">
@@ -18,6 +18,58 @@
       d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
     />
   </svg>
+  <div class="input-group mb-4">
+    <button class="SaerchButton btn" type="button">Saerch</button>
+    <input
+      type="text"
+      class="form-control"
+      placeholder=""
+      aria-label="Example text with button addon"
+      aria-describedby="button-addon1"
+    />
+  </div>
+</div> -->
+
+<div
+  class="position-relative py-3 px-4 text-bg-primary border border-secondary d-flex justify-content-between"
+>
+  <div class="text-center fw-bolder">
+    <p>The Movie DataBase</p>
+  </div>
+
+  <div class="ms-auto">
+    <div class="input-group mb-4">
+      <button
+        class="SearchButton btn custom-color"
+        type="button"
+        (click)="SearchClicked(searchText, true)"
+      >
+        Search
+      </button>
+      <input
+        type="text"
+        class="form-control"
+        placeholder=""
+        aria-label="Example text with button addon"
+        aria-describedby="button-addon1"
+        [(ngModel)]="searchText"
+        (click)="toggleSearchHistoryDropdown()"
+      />
+      <div *ngIf="showSearchHistoryDropdown  && searchHistory.length > 0" class="search-history-dropdown">
+        <ul>
+          <li *ngFor="let historyItem of searchHistory" (click)="selectSearchHistory(historyItem)">
+            {{ historyItem }}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- <select *ngIf="searchHistory.length > 0" class="form-select">
+      <option value="" disabled selected>Select from history</option>
+      <option *ngFor="let historyItem of searchHistory" [value]="historyItem">
+        {{ historyItem }}
+      </option>
+    </select> -->
+  </div>
 </div>
 
 <!-- <div *ngFor="let movie of MovieList?.results">
@@ -29,10 +81,10 @@
   />
 </div> -->
 <!-- src="https://image.tmdb.org/t/p/original/{{ movie.backdrop_path }}" -->
-<div class="movie-grid" *ngIf="MovieList?.results">
+<div class="movie-grid" *ngIf="searchText; else nonFilteredMovies">
   <div
     class="movie-card"
-    *ngFor="let movie of MovieList.results"
+    *ngFor="let movie of SearchedMovieList.results"
     routerLink="/ViewDetails/{{ movie.id }}"
   >
     <h4>{{ movie.original_title }}</h4>
@@ -43,6 +95,34 @@
     />
   </div>
 </div>
+<ng-template #nonFilteredMovies>
+  <div class="movie-grid">
+    <div
+      class="movie-card"
+      *ngFor="let movie of MovieList.results"
+      routerLink="/ViewDetails/{{ movie.id }}"
+    >
+      <h4>{{ movie.original_title }}</h4>
+      <img
+        src="https://image.tmdb.org/t/p/w200/{{ movie.backdrop_path }}"
+        class="img-fluid"
+        alt="movie poster"
+      />
+    </div>
+    <div
+      class="movie-card"
+      *ngFor="let movie of MovieList.results"
+      routerLink="/ViewDetails/{{ movie.id }}"
+    >
+      <h4>{{ movie.original_title }}</h4>
+      <img
+        src="https://image.tmdb.org/t/p/w200/{{ movie.backdrop_path }}"
+        class="img-fluid"
+        alt="movie poster"
+      />
+    </div>
+  </div>
+</ng-template>
 <br />
 <!-- <div class="d-flex justify-content-end" style="margin-right: 25px">
   <nav aria-label="Page navigation example">
